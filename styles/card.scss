@@ -1,0 +1,65 @@
+
+/** Card **/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (width >= 700px) {
+  .card {
+    grid-column: span 5;
+  }
+}
+
+.card > .image {
+  width: 100%;
+}
+
+.card > .image img {
+  display: block;
+  border-top-left-radius: var(--border-radius-regular);
+  border-top-right-radius: var(--border-radius-regular);
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.card > .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  padding: calc(var(--spacing) / 2);
+  border: var(--border-regular);
+  border-top: 0;
+  border-bottom-left-radius: var(--border-radius-regular);
+  border-bottom-right-radius: var(--border-radius-regular);
+}
+
+/**
+ * notum nýja selectora! brotið niður
+ * .card            <- veljum öll .card
+ * :not(            <- nema, við viljum ef _ekki_...
+ *   :has(> .image) <- .image sem strangt barn .card
+ * )                <- endir á :not()
+ * > .content       <- sem er strax barn af .card
+ * Þ.e.a.s. fyrir .card sem hefur ekki .image, setja border + radíus á allt .content
+ */
+.card:not(:has(> .image)) > .content {
+  border: var(--border-regular);
+  border-radius: var(--border-radius-regular);
+}
+
+.card > .content > .text {
+  flex: 1;
+}
+
+.card > .content > .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing);
+  margin-top: var(--spacing);
+}

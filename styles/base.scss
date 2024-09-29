@@ -1,0 +1,116 @@
+
+html {
+  /* Reiknum stærð á öllum boxum sem border-box */
+  box-sizing: border-box;
+
+  /* Til að transition sé ekki frá hvítum */
+  background-color: var(--color-background-primary);
+
+  /* Grunnstærð er 16px */
+  font-size: var(--font-size-base);
+}
+
+/* og látum erfast á allt */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* hjálpar class sem felur sjónrænt en skjálesarar lesa */
+.sr-only:not(:focus, :active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+/* Almennt */
+
+/*** Allt meginmál notar open sans ***/
+html,
+input,
+select,
+button {
+  font-family: var(--font-family-base);
+}
+
+/*** Allar fyrirsagnir nota Matemasie regular ***/
+h1,
+h2,
+h3,
+legend {
+  font-family: var(--font-family-heading);
+}
+
+/** Lætur myndir aldrei taka meira pláss en foreldri skilgreinir **/
+img {
+  max-width: 100%;
+}
+
+
+/** Litur á hlekkjum erfist frá foreldri **/
+a {
+  color: inherit;
+}
+
+/** „Til baka á forsíðu“ hlekkur **/
+.back {
+  margin-top: var(--spacing);
+}
+
+/** Almennt takka útlit, getur virkað á bæði <a> og <button> **/
+.button {
+  display: inline-block;
+  padding: calc(var(--spacing) * 0.5) var(--spacing);
+  border: var(--border-regular);
+  border-radius: var(--border-radius-regular);
+  border-width: var(--border-width);
+  color: var(--color-black);
+  background-color: var(--color-background-secondary);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color var(--transition-time-short)
+    var(--transition-timing-function),
+    color var(--transition-time-short) var(--transition-timing-function),
+    border-color var(--transition-time-short) var(--transition-timing-function);
+}
+
+.button:hover {
+  color: var(--color-background-secondary);
+  background-color: var(--color-black);
+  border-color: var(--color-background-secondary);
+}
+
+
+/* Fade in animation */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+header,
+.wrapper {
+  animation: var(--transition-time-long) var(--transition-timing-function)
+    fade-in;
+}
+
+/*** Opnunartími ***/
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: var(--spacing);
+}

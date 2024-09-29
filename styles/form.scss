@@ -1,0 +1,25 @@
+/** Skráningarform **/
+
+fieldset {
+  border: 0;
+}
+
+fieldset legend {
+  margin-bottom: var(--spacing);
+  font-size: var(--font-size-headings);
+}
+
+fieldset input,
+fieldset select,
+fieldset textarea {
+  padding: calc(var(--spacing) * 0.5);
+  width: 100%;
+  border: var(--border-regular);
+  background-color: var(--color-background-form);
+}
+
+fieldset input[type='checkbox'] {
+  display: inline-block;
+  margin-right: calc(var(--spacing) * 0.5);
+  width: auto;
+}

@@ -1,0 +1,22 @@
+/*** Leturgerðir sem við sækjum úr fonts/ möppu ***/
+@font-face {
+  font-family: Matemasie-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Matemasie-Regular.ttf') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  src: url('./fonts/OpenSans-VariableFont_wdth\,wght.ttf') format('woff2');
+}
