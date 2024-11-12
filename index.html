@@ -17,38 +17,53 @@
       <div class="outfit">
         <!-- Top Section -->
         <div class="item-card item-top">
-            <div class="image"><img src="myndir/toppur.jpg" alt="Toppur"></div>
-            <div class="controls">
-                <button onclick="prevTop()">◀</button>
-                <button onclick="nextTop()">▶</button>
-            </div>
-            <input type="file" id="top-upload" accept="image/*" onchange="uploadTopImage(event)">
-            <button onclick="deleteTopImage()">Delete Top</button>
-        </div>
+          <div class="image"><img id="top-item" src="myndir/toppur.jpg" alt="Toppur">
+          </div>
+          
+          <!-- Controls for Next/Previous Buttons (Aligned at the Bottom) -->
+          <div class="controls">
+              <button onclick="prevImage('top')">◀</button>
+              <button onclick="nextImage('top')">▶</button>
+          </div>
+      
+          <!-- Menu Button for File Upload and Delete Options -->
+          <button id="menu-button" onclick="toggleMenu('top-menu')">☰ Menu</button>
+          <div id="top-menu" class="hidden-options" style="display: none;">
+              <input type="file" id="top-upload" accept="image/*" onchange="uploadImage(event, 'top');">
+              <button onclick="deleteCurrentImage('top')">Delete Top</button>
+          </div>
+      </div>
  
         <!-- Bottom Section -->
         <div class="item-card item-bottom">
-          <div class="image"><img src="myndir/pils.jpg" alt="Pils"></div>
+          <div class="image"><img id="bottom-item" src="myndir/pils.jpg" alt="Pils"></div>
             <div class="controls">
-                <button onclick="prevBottom()">◀</button>
-                <button onclick="nextBottom()">▶</button>
+                <button onclick="prevImage('bottom')">◀</button>
+                <button onclick="nextImage('bottom')">▶</button>
             </div>
-            <input type="file" id="bottom-upload" accept="image/*" onchange="uploadBottomImage(event)">
-            <button onclick="deleteBottomImage()">Delete Bottom</button>
+
+            <button id="menu-button" onclick="toggleMenu('bottom-menu')">☰ Menu</button>
+            <div id="bottom-menu" class="hidden-options" style="display: none;">
+                <input type="file" id="bottom-upload" accept="image/*" onchange="uploadImage(event, 'bottom')">
+                <button onclick="deleteCurrentImage('bottom')">Delete Bottom</button>
+            </div>
         </div>
  
         <!-- Shoe Section -->
         <div class="item-card item-shoes">
-          <div class="image"><img src="myndir/skor.jpg" alt="Skór"></div>
+          <div class="image"><img id="shoes-item" src="myndir/skor.jpg" alt="Skór"></div>
             <div class="controls">
-                <button onclick="prevShoe()">◀</button>
-                <button onclick="nextShoe()">▶</button>
+                <button onclick="prevImage('shoes')">◀</button>
+                <button onclick="nextImage('shoes')">▶</button>
             </div>
-            <input type="file" id="shoe-upload" accept="image/*" onchange="uploadShoeImage(event)">
-            <button onclick="deleteShoeImage()">Delete Shoes</button>
+            <button id="menu-button" onclick="toggleMenu('shoe-menu')">☰ Menu</button>
+            <div id="shoe-menu" class="hidden-options" style="display: none;">
+                <input type="file" id="shoes-upload" accept="image/*" onchange="uploadImage(event, 'shoes')">
+                <button onclick="deleteCurrentImage('shoes')">Delete Shoes</button>
         </div>
     </div>
     <button onclick="dressMe()">Dress Me</button>
     </div>
+    <script src="js/main.js"></script>
   </body>
 </html>
