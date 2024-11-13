@@ -14,6 +14,8 @@ JavaScrit er í möppunni js.
 
 ChatGPT var nýtt í þetta verkefni.
 
+Síðan er ekki responsive og getur því aðeins verið notuð í tölvu.
+
 ## Virkni
 Síðan er öll á ensku þar sem að mér þótti erfitt að finna íslenskt orð fyrir "outfit"
 Leiðbeiningar um hvernig notendur eiga að nota síðuna eru á síðunni sjálfri undir takkanum "How it works" en síðan er nokkurs konar stafrænn fataskápur þar sem að notendur geta hlaðið inn myndum af fötum og skóm og raðað þeim saman til þess að búa til klænaðinn sem að þeir vilja. Síðan er einnig hægt er að vista klæðnaðinn sinn.
