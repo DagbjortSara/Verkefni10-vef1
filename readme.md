@@ -16,6 +16,11 @@ ChatGPT var nýtt í þetta verkefni.
 
 Síðan er ekki responsive og getur því aðeins verið notuð í tölvu.
 
+Það verður helst að hlaða niður þrem myndum (eina mynd í hvern kassa) til þess að sjá virknina á síðunni...þar sem að hún lítur ekki nógu vel út án þeirra. 
+
+Það er hægt að gera með því að ýta á stjörnurnar sem eru efst í hægri og vinstri hornunum í hvítu kössunum.
+Örvarnar skyggja aðeins á stjörnunar áður en að myndum er hlaðið upp. Ég náði ekki að finna nógu vel út úr því hvernig ég gat lagað það.
+
 ## Virkni
 Síðan er öll á ensku þar sem að mér þótti erfitt að finna íslenskt orð fyrir "outfit"
 Leiðbeiningar um hvernig notendur eiga að nota síðuna eru á síðunni sjálfri undir takkanum "How it works" en síðan er nokkurs konar stafrænn fataskápur þar sem að notendur geta hlaðið inn myndum af fötum og skóm og raðað þeim saman til þess að búa til klænaðinn sem að þeir vilja. Síðan er einnig hægt er að vista klæðnaðinn sinn.
