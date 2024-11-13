@@ -10,59 +10,82 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Tískan mín</h1>
-      </header>
+    <header>
+      <h1>My fashion</h1>
+    </header>
+  
+      <div class="wrapper-outfit">
 
-      <div class="outfit">
-        <!-- Top Section -->
+        <button id="my-outfits-button" onclick="toggleOutfits()"><strong> My Outfits</strong></button>
+          <div id="saved-outfits-container">
+            <p id="no-outfits-message">There are no outfits saved.</p>
+          </div>
+          <button id="save-outfit-button" onclick="saveOutfit()"><strong> Save Outfit</strong></button>
+   
+
+        <button id = "how-it-works-button" onclick="showInstructions()"><strong>How It Works</strong></button>
+
+      <div id="instructions-modal" style="display: none;">
+        <div class="modal-content">
+          <span class="close" onclick="closeInstructions()">&times;</span>
+          <h2>Welcome to your Digital Wardrobe!</h2>
+          <ul>
+            <li>Click the ★ for the options 'Choose File' and 'Delete item'.</li>
+            <li>Use 'upload file' button to upload your clothes</li>
+            <li>Use the 'Delete' button to remove the current item.</li>
+            <li>Use the ◀ and ▶ buttons to flip through your images.</li>
+            <li>Click 'Save Outfit' to save the outfit.</li>
+            <li>Click 'My Outfits' to see your saved outfits and or delete them.</li>
+            <li>Click 'Dress Me' to generate a random outfit.</li>
+          </ul>
+          <p>Have fun styling!</p>
+        </div>
+      </div>
+
+
         <div class="item-card item-top">
           <div class="image"><img id="top-item" src="myndir/toppur.jpg" alt="Toppur">
           </div>
           
-          <!-- Controls for Next/Previous Buttons (Aligned at the Bottom) -->
           <div class="controls">
-              <button onclick="prevImage('top')">◀</button>
-              <button onclick="nextImage('top')">▶</button>
+              <button id = "controlarrow" onclick="prevImage('top')">◀</button>
+              <button id = "controlarrow" onclick="nextImage('top')">▶</button>
           </div>
       
-          <!-- Menu Button for File Upload and Delete Options -->
-          <button id="menu-button" onclick="toggleMenu('top-menu')">☰ Menu</button>
+          <button id="star-button" onclick="toggleMenu('top-menu')">★</button>
           <div id="top-menu" class="hidden-options" style="display: none;">
               <input type="file" id="top-upload" accept="image/*" onchange="uploadImage(event, 'top');">
               <button onclick="deleteCurrentImage('top')">Delete Top</button>
           </div>
       </div>
  
-        <!-- Bottom Section -->
         <div class="item-card item-bottom">
           <div class="image"><img id="bottom-item" src="myndir/pils.jpg" alt="Pils"></div>
             <div class="controls">
-                <button onclick="prevImage('bottom')">◀</button>
-                <button onclick="nextImage('bottom')">▶</button>
+                <button id = "controlarrow" onclick="prevImage('bottom')">◀</button>
+                <button id = "controlarrow" onclick="nextImage('bottom')">▶</button>
             </div>
 
-            <button id="menu-button" onclick="toggleMenu('bottom-menu')">☰ Menu</button>
+            <button id="star-button" onclick="toggleMenu('bottom-menu')">★</button>
             <div id="bottom-menu" class="hidden-options" style="display: none;">
                 <input type="file" id="bottom-upload" accept="image/*" onchange="uploadImage(event, 'bottom')">
                 <button onclick="deleteCurrentImage('bottom')">Delete Bottom</button>
             </div>
         </div>
  
-        <!-- Shoe Section -->
         <div class="item-card item-shoes">
           <div class="image"><img id="shoes-item" src="myndir/skor.jpg" alt="Skór"></div>
             <div class="controls">
-                <button onclick="prevImage('shoes')">◀</button>
-                <button onclick="nextImage('shoes')">▶</button>
+                <button id = "controlarrow" onclick="prevImage('shoes')">◀</button>
+                <button id = "controlarrow" onclick="nextImage('shoes')">▶</button>
             </div>
-            <button id="menu-button" onclick="toggleMenu('shoe-menu')">☰ Menu</button>
+            <button id="star-button" onclick="toggleMenu('shoe-menu')">★</button>
             <div id="shoe-menu" class="hidden-options" style="display: none;">
                 <input type="file" id="shoes-upload" accept="image/*" onchange="uploadImage(event, 'shoes')">
                 <button onclick="deleteCurrentImage('shoes')">Delete Shoes</button>
         </div>
     </div>
-    <button onclick="dressMe()">Dress Me</button>
+    <button id= "dressMe-button" onclick="dressMe()"><strong>Dress Me</strong></button>
     </div>
     <script src="js/main.js"></script>
   </body>

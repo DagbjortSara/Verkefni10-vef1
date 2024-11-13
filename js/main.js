@@ -1,3 +1,22 @@
+function showInstructions() {
+  const modal = document.getElementById("instructions-modal");
+  modal.style.display = "flex"; 
+}
+
+function closeInstructions() {
+  const modal = document.getElementById("instructions-modal");
+  modal.style.display = "none"; 
+}
+
+
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("instructions-modal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
     if (menu.style.display === "none" || menu.style.display === "") {
@@ -13,41 +32,37 @@ const images = {
   shoes: JSON.parse(localStorage.getItem("shoesImages")) || [],
 };
 
-// Keep track of the current index for each section
 const currentIndex = {
   top: 0,
   bottom: 0,
   shoes: 0,
 };
 
-// Function to handle image uploads
 function uploadImage(event, section) {
-  const file = event.target.files[0]; // Get the uploaded file
+  const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      images[section].push(e.target.result); // Add the uploaded image to the array
-      localStorage.setItem(`${section}Images`, JSON.stringify(images[section])); // Save to localStorage
-      currentIndex[section] = images[section].length - 1; // Set the current index to the new image
-      displayImage(section); // Update the displayed image
+      images[section].push(e.target.result); 
+      localStorage.setItem(`${section}Images`, JSON.stringify(images[section])); 
+      currentIndex[section] = images[section].length - 1; 
+      displayImage(section); 
     };
-    reader.readAsDataURL(file); // Convert file to Base64
+    reader.readAsDataURL(file); 
   }
 }
 
-// Function to display the current image for a section
 function displayImage(section) {
   const imgElement = document.getElementById(`${section}-item`);
   console.log(`Section: ${section}, imgElement:`, imgElement);
   if (images[section].length > 0) {
-    imgElement.src = images[section][currentIndex[section]]; // Display the current image
+    imgElement.src = images[section][currentIndex[section]]; 
     imgElement.style.display = "block";
   } else {
-    imgElement.style.display = "none"; // Hide the image if there are no images
+    imgElement.style.display = "none"; 
   }
 }
 
-// Function to navigate to the previous image
 function prevImage(section) {
   if (images[section].length > 0) {
     currentIndex[section] =
@@ -57,7 +72,6 @@ function prevImage(section) {
   }
 }
 
-// Function to navigate to the next image
 function nextImage(section) {
   if (images[section].length > 0) {
     currentIndex[section] =
@@ -66,28 +80,22 @@ function nextImage(section) {
   }
 }
 
-// Initialize images on page load
 function initializeImages() {
-  Object.keys(images).forEach((section) => displayImage(section)); // Display images for all sections
+  Object.keys(images).forEach((section) => displayImage(section)); 
 }
 
-// Initialize on page load
 document.addEventListener("DOMContentLoaded", initializeImages);
 
 function deleteCurrentImage(section) {
   if (images[section].length > 0) {
-    // Remove the current image
     images[section].splice(currentIndex[section], 1);
 
-    // Update localStorage
     localStorage.setItem(`${section}Images`, JSON.stringify(images[section]));
 
-    // Adjust the current index to avoid out-of-bounds issues
     if (currentIndex[section] >= images[section].length) {
       currentIndex[section] = images[section].length - 1;
     }
 
-    // Refresh the displayed image
     displayImage(section);
   } else {
     console.log(`No images to delete in section: ${section}`);
@@ -95,16 +103,113 @@ function deleteCurrentImage(section) {
 }
 
 function dressMe() {
-  // Iterate through each section
   Object.keys(images).forEach((section) => {
     if (images[section].length > 0) {
-      // Randomly select an index within the range of the images array
+  
       currentIndex[section] = Math.floor(
         Math.random() * images[section].length
       );
-      displayImage(section); // Update the displayed image for the section
+      displayImage(section); 
     } else {
       console.log(`No images available for section: ${section}`);
     }
   });
 }
+
+let savedOutfits = JSON.parse(localStorage.getItem("savedOutfits")) || []; 
+let isOutfitsContainerVisible = false; 
+
+function toggleOutfits() {
+  const container = document.getElementById("saved-outfits-container");
+
+  isOutfitsContainerVisible = !isOutfitsContainerVisible;
+  container.style.display = isOutfitsContainerVisible ? "block" : "none";
+
+  updateOutfitContainerVisibility(); 
+}
+
+function updateOutfitContainerVisibility() {
+  const savedOutfitsContainer = document.getElementById("saved-outfits-container");
+  const noOutfitsMessage = document.getElementById("no-outfits-message");
+
+  const hasOutfits = savedOutfits.length > 0; 
+
+  noOutfitsMessage.style.display = hasOutfits ? "none" : "block";
+
+  if (isOutfitsContainerVisible) {
+    savedOutfitsContainer.style.display = "block";
+  } else {
+    savedOutfitsContainer.style.display = "none";
+  }
+}
+
+function saveOutfit() {
+  if (savedOutfits.length >= 10) {
+    alert("You can only save up to 10 outfits! Please delete an outfit before saving a new one.");
+    return; 
+  }
+
+  const outfit = {
+    top: images.top[currentIndex.top],
+    bottom: images.bottom[currentIndex.bottom],
+    shoes: images.shoes[currentIndex.shoes],
+  };
+
+  savedOutfits.push(outfit);
+  localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits));
+
+  refreshOutfits(); 
+  updateOutfitContainerVisibility(); 
+}
+
+function loadOutfit(index) {
+  const outfit = savedOutfits[index];
+  if (outfit) {
+    images.top[currentIndex.top] = outfit.top;
+    images.bottom[currentIndex.bottom] = outfit.bottom;
+    images.shoes[currentIndex.shoes] = outfit.shoes;
+    displayImage("top");
+    displayImage("bottom");
+    displayImage("shoes");
+  }
+}
+
+function deleteOutfit(index) {
+  savedOutfits.splice(index, 1); 
+  localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits)); 
+
+  refreshOutfits(); 
+  updateOutfitContainerVisibility(); 
+}
+
+function refreshOutfits() {
+  const container = document.getElementById("saved-outfits-container");
+  container.innerHTML = ""; 
+
+  savedOutfits.forEach((outfit, index) => {
+    const outfitWrapper = document.createElement("div");
+    outfitWrapper.className = "outfit-wrapper";
+
+    const outfitButton = document.createElement("button");
+    outfitButton.className = "outfit-button";
+    outfitButton.textContent = `Outfit ${index + 1}`;
+    outfitButton.onclick = () => loadOutfit(index); // Load outfit on click
+    outfitWrapper.appendChild(outfitButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = () => deleteOutfit(index); // Delete outfit on click
+    outfitWrapper.appendChild(deleteButton);
+
+    container.appendChild(outfitWrapper);
+  });
+}
+
+function initializeSavedOutfits() {
+  refreshOutfits();
+  updateOutfitContainerVisibility();
+}
+
+document.addEventListener("DOMContentLoaded", initializeSavedOutfits);
+
