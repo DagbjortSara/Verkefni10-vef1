@@ -10,7 +10,9 @@ JavaScrit er í möppunni js.
 
 Ég notaði sýnislausn á verkenfi 6 sem grunn að síðunni og eyddi því sem að var ekki notað úr því verkefni.
 
-Ég kann ekki nógu vel á sass eða package.json...svo að eslint eða lint virkar líklegast ekki nægilega vel á þetta verkefni þar sem að sýnilausnin sem að ég notaði sem grunn notaði sass og scss, en mér sýnist síðan virka vel!
+Ég kann ekki nógu vel á sass scss eða package.json...svo að eslint eða lint virkar mögulega ekki nægilega vel á þetta verkefni þar sem að sýnilausnin sem að ég notaði sem grunn notaði sass og scss..., en mér sýnist síðan virka vel!
+
+ChatGPT var nýtt í þetta verkefni.
 
 ## Virkni
 Síðan er öll á ensku þar sem að mér þótti erfitt að finna íslenskt orð fyrir "outfit"

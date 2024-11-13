@@ -1,13 +1,12 @@
 function showInstructions() {
   const modal = document.getElementById("instructions-modal");
-  modal.style.display = "flex"; 
+  modal.style.display = "flex";
 }
 
 function closeInstructions() {
   const modal = document.getElementById("instructions-modal");
-  modal.style.display = "none"; 
+  modal.style.display = "none";
 }
-
 
 window.addEventListener("click", function (event) {
   const modal = document.getElementById("instructions-modal");
@@ -16,14 +15,13 @@ window.addEventListener("click", function (event) {
   }
 });
 
-
 function toggleMenu(menuId) {
-    const menu = document.getElementById(menuId);
-    if (menu.style.display === "none" || menu.style.display === "") {
-        menu.style.display = "flex"; 
-    } else {
-        menu.style.display = "none";
-    }
+  const menu = document.getElementById(menuId);
+  if (menu.style.display === "none" || menu.style.display === "") {
+    menu.style.display = "flex";
+  } else {
+    menu.style.display = "none";
+  }
 }
 
 const images = {
@@ -43,12 +41,12 @@ function uploadImage(event, section) {
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      images[section].push(e.target.result); 
-      localStorage.setItem(`${section}Images`, JSON.stringify(images[section])); 
-      currentIndex[section] = images[section].length - 1; 
-      displayImage(section); 
+      images[section].push(e.target.result);
+      localStorage.setItem(`${section}Images`, JSON.stringify(images[section]));
+      currentIndex[section] = images[section].length - 1;
+      displayImage(section);
     };
-    reader.readAsDataURL(file); 
+    reader.readAsDataURL(file);
   }
 }
 
@@ -56,10 +54,10 @@ function displayImage(section) {
   const imgElement = document.getElementById(`${section}-item`);
   console.log(`Section: ${section}, imgElement:`, imgElement);
   if (images[section].length > 0) {
-    imgElement.src = images[section][currentIndex[section]]; 
+    imgElement.src = images[section][currentIndex[section]];
     imgElement.style.display = "block";
   } else {
-    imgElement.style.display = "none"; 
+    imgElement.style.display = "none";
   }
 }
 
@@ -81,7 +79,7 @@ function nextImage(section) {
 }
 
 function initializeImages() {
-  Object.keys(images).forEach((section) => displayImage(section)); 
+  Object.keys(images).forEach((section) => displayImage(section));
 }
 
 document.addEventListener("DOMContentLoaded", initializeImages);
@@ -105,19 +103,18 @@ function deleteCurrentImage(section) {
 function dressMe() {
   Object.keys(images).forEach((section) => {
     if (images[section].length > 0) {
-  
       currentIndex[section] = Math.floor(
         Math.random() * images[section].length
       );
-      displayImage(section); 
+      displayImage(section);
     } else {
       console.log(`No images available for section: ${section}`);
     }
   });
 }
 
-let savedOutfits = JSON.parse(localStorage.getItem("savedOutfits")) || []; 
-let isOutfitsContainerVisible = false; 
+let savedOutfits = JSON.parse(localStorage.getItem("savedOutfits")) || [];
+let isOutfitsContainerVisible = false;
 
 function toggleOutfits() {
   const container = document.getElementById("saved-outfits-container");
@@ -125,14 +122,16 @@ function toggleOutfits() {
   isOutfitsContainerVisible = !isOutfitsContainerVisible;
   container.style.display = isOutfitsContainerVisible ? "block" : "none";
 
-  updateOutfitContainerVisibility(); 
+  updateOutfitContainerVisibility();
 }
 
 function updateOutfitContainerVisibility() {
-  const savedOutfitsContainer = document.getElementById("saved-outfits-container");
+  const savedOutfitsContainer = document.getElementById(
+    "saved-outfits-container"
+  );
   const noOutfitsMessage = document.getElementById("no-outfits-message");
 
-  const hasOutfits = savedOutfits.length > 0; 
+  const hasOutfits = savedOutfits.length > 0;
 
   noOutfitsMessage.style.display = hasOutfits ? "none" : "block";
 
@@ -145,8 +144,10 @@ function updateOutfitContainerVisibility() {
 
 function saveOutfit() {
   if (savedOutfits.length >= 10) {
-    alert("You can only save up to 10 outfits! Please delete an outfit before saving a new one.");
-    return; 
+    alert(
+      "You can only save up to 10 outfits! Please delete an outfit before saving a new one."
+    );
+    return;
   }
 
   const outfit = {
@@ -158,8 +159,8 @@ function saveOutfit() {
   savedOutfits.push(outfit);
   localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits));
 
-  refreshOutfits(); 
-  updateOutfitContainerVisibility(); 
+  refreshOutfits();
+  updateOutfitContainerVisibility();
 }
 
 function loadOutfit(index) {
@@ -175,16 +176,16 @@ function loadOutfit(index) {
 }
 
 function deleteOutfit(index) {
-  savedOutfits.splice(index, 1); 
-  localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits)); 
+  savedOutfits.splice(index, 1);
+  localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits));
 
-  refreshOutfits(); 
-  updateOutfitContainerVisibility(); 
+  refreshOutfits();
+  updateOutfitContainerVisibility();
 }
 
 function refreshOutfits() {
   const container = document.getElementById("saved-outfits-container");
-  container.innerHTML = ""; 
+  container.innerHTML = "";
 
   savedOutfits.forEach((outfit, index) => {
     const outfitWrapper = document.createElement("div");
@@ -212,4 +213,3 @@ function initializeSavedOutfits() {
 }
 
 document.addEventListener("DOMContentLoaded", initializeSavedOutfits);
-

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Verkefni 10",
   "scripts": {
-    "browser-sync": "browser-sync start --server --files index.html styles.css",
+    "browser-sync": "browser-sync start --server --files index.html styles.css js/*.js",
+    "sass-watch": "sass --watch styles.scss:styles.css",
     "dev": "concurrently npm:sass-watch npm:browser-sync",
     "lint": "stylelint styles.css"
   },
   "keywords": [],
-  "author": "Óli",
+  "author": "Dagbjört",
   "devDependencies": {
     "@eslint/js": "^9.14.0",
     "browser-sync": "^3.0.3",
