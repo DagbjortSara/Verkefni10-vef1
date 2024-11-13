@@ -16,7 +16,8 @@ ChatGPT var nýtt í þetta verkefni.
 
 Síðan er ekki responsive og getur því aðeins verið notuð í tölvu.
 
-Það verður helst að hlaða niður þrem myndum (eina mynd í hvern kassa) til þess að sjá virknina á síðunni...þar sem að hún lítur ekki nógu vel út án þeirra. 
+Ég veit ekki hvort að myndirnar sem að ég hlóð upp á síðunni fylgi með svo að mögulega þarf að hlaða upp myndum.
+Það verður helst að hlaða upp þrem myndum (eina mynd í hvern kassa) til þess að sjá virknina á síðunni...þar sem að hún lítur ekki nógu vel út án þeirra. 
 
 Það er hægt að gera með því að ýta á stjörnurnar sem eru efst í hægri og vinstri hornunum í hvítu kössunum.
 Örvarnar skyggja aðeins á stjörnunar áður en að myndum er hlaðið upp. Ég náði ekki að finna nógu vel út úr því hvernig ég gat lagað það.
