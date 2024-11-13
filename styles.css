@@ -295,7 +295,6 @@ body::before {
 }
 
 .controls #controlarrow {
-  top: 50%;
   font-size: 25px;
   border: none;
   background: none;
